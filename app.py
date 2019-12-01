@@ -114,7 +114,8 @@ def order_status():
       
       aa = {}
       aa['input'] = int(request.form.get('ui_query'))
-      aa['result'] = "You have successfully logged in! How can I help you?"
+      aa['result'] = request.form.get('sss')
+      #aa['result'] = "You have successfully logged in! How can I help you?"
       return aa
       query1 = pd.Series(query)
       query2 = query1.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
