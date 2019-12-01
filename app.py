@@ -114,7 +114,7 @@ def order_status():
       
       aa = {}
       aa['input'] = int(request.form.get('ui_query'))
-      aa['result'] = request.form.get('sss')
+      aa['result'] = request.form.get('user_id')
       #aa['result'] = "You have successfully logged in! How can I help you?"
       return aa
       query1 = pd.Series(query)
