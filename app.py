@@ -25,6 +25,72 @@ def convert(s):
     # return string
   return new
 
+# Method for writing into an existing excelsheet
+def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=2,truncate_sheet=True,**to_excel_kwargs):
+
+    from openpyxl import load_workbook
+    import pandas as pd
+    # ignore [engine] parameter if it was passed
+    if 'engine' in to_excel_kwargs:
+        to_excel_kwargs.pop('engine')
+    writer = pd.ExcelWriter(filename, engine='openpyxl')
+
+    # Python 2.x: define [FileNotFoundError] exception if it doesn't exist 
+    try:
+        FileNotFoundError
+    except NameError:
+        FileNotFoundError = IOError
+
+
+    try:
+        # try to open an existing workbook
+        writer.book = load_workbook(filename)
+
+        # get the last row in the existing Excel sheet
+        # if it was not specified explicitly
+        if startrow is None and sheet_name in writer.book.sheetnames:
+            startrow = writer.book[sheet_name].max_row
+
+        # truncate sheet
+        if truncate_sheet and sheet_name in writer.book.sheetnames:
+            # index of [sheet_name] sheet
+            idx = writer.book.sheetnames.index(sheet_name)
+            # remove [sheet_name]
+            writer.book.remove(writer.book.worksheets[idx])
+            # create an empty sheet [sheet_name] using old index
+            writer.book.create_sheet(sheet_name, idx)
+
+        # copy existing sheets
+        writer.sheets = {ws.title:ws for ws in writer.book.worksheets}
+    except FileNotFoundError:
+        # file does not exist yet, we will create it
+        pass
+
+    if startrow is None:
+        startrow = 0
+
+    # write out the new sheet
+    df.to_excel(writer, sheet_name, startrow=startrow, **to_excel_kwargs)
+
+    # save the workbook
+    writer.save()
+    
+#Reading the document and the relevant fields
+df=pd.read_excel("chatbot - CGL.xlsx")
+dfq=df['Question']
+dfa=df['Answer']
+SD = pd.read_excel("CGL Retailer Details.xlsx")
+
+
+#Lemmatization of "Questions"
+from textblob import Word
+dfq1 = dfq.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
+dfq1.head()
+#Removal of stop words
+from nltk.corpus import stopwords
+stop = stopwords.words('english')
+dfq1 = dfq1.apply(lambda x: " ".join(x for x in x.split() if x not in stop))
+dfq1.head()
 
 # Basic code required to run the app on heroku
 from flask import Flask, render_template, request, json, jsonify, make_response
@@ -35,22 +101,6 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def order_status():
   if request.method == 'POST':
-    #Reading the document and the relevant fields
-    df=pd.read_excel("chatbot - CGL.xlsx")
-    dfq=df['Question']
-    dfa=df['Answer']
-    dfq.head()
-    dfa.head()
-    #Lemmatization of "Questions"
-    from textblob import Word
-    dfq1 = dfq.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
-    dfq1.head()
-    #Removal of stop words
-    from nltk.corpus import stopwords
-    stop = stopwords.words('english')
-    dfq1 = dfq1.apply(lambda x: " ".join(x for x in x.split() if x not in stop))
-    dfq1.head()
-  
     # Changing the "Questions" to lower case
     dfq_1 = [w.lower() for w in dfq1]
     # "Answers" have been converted to a list
