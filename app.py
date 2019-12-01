@@ -122,9 +122,11 @@ def order_status():
           aa['sss'] = userid
           #aa['result'] = aa['sss']
           aa['result'] = "You have successfully logged in! How can I help you?"
+          global userid_global
           userid_global = userid
           return aa
       except ValueError:
+          global userid_global
           if userid_global != "":
               query = request.form.get('ui_query')
               query1 = pd.Series(query)
