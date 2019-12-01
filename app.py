@@ -144,7 +144,8 @@ def order_status():
               elif ChatReply[1]>=70 and ChatReply[2] <= 48:
                   aa = {}
                   aa['input'] = request.form.get('ui_query')
-                  aa['result'] = dfa[ChatReply[2]]
+                  aa['result'] = request.form.get('user_id')
+                  #aa['result'] = dfa[ChatReply[2]]
                   
               else:
                   aa = {}
