@@ -102,8 +102,9 @@ app = Flask(__name__)
 def order_status():
   if request.method == 'POST':
       #Taking the input query from user and converting it to an usable string
-      userid = int(request.form.get('ui_query'))
       try:
+          userid = int(request.form.get('ui_query'))
+          break
           if userid in list(SD['ID']):
               Retailer = SD[SD['ID'] == userid]
           else:
