@@ -104,6 +104,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def order_status():
+  global userid_global
   if request.method == 'POST':
       #Taking the input query from user and converting it to an usable string
       try:
@@ -122,11 +123,9 @@ def order_status():
           aa['sss'] = userid
           #aa['result'] = aa['sss']
           aa['result'] = "You have successfully logged in! How can I help you?"
-          global userid_global
           userid_global = userid
           return aa
       except ValueError:
-          global userid_global
           if userid_global != "":
               query = request.form.get('ui_query')
               query1 = pd.Series(query)
