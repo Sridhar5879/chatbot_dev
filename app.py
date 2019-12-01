@@ -116,7 +116,7 @@ def order_status():
           aa = {}
           aa['input'] = int(request.form.get('ui_query'))
           aa['sss'] = userid
-          aa['result'] = request.form.get('sss')
+          aa['result'] = aa('sss')
           #aa['result'] = "You have successfully logged in! How can I help you?"
           return aa
       except ValueError:
