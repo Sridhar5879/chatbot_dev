@@ -78,6 +78,10 @@ df=pd.read_excel("chatbot - CGL.xlsx")
 SD = pd.read_excel("CGL Retailer Details.xlsx")
 dfq=df['Question']
 dfa=df['Answer']
+
+#global variables
+userid_global = ""
+
 #Lemmatization of "Questions"
 from textblob import Word
 dfq1 = dfq.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
@@ -118,9 +122,10 @@ def order_status():
           aa['sss'] = userid
           #aa['result'] = aa['sss']
           aa['result'] = "You have successfully logged in! How can I help you?"
+          userid_global = userid
           return aa
       except ValueError:
-          if request.form.get('user_id') != "":
+          if userid_global != "":
               query = request.form.get('ui_query')
               query1 = pd.Series(query)
               query2 = query1.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
@@ -144,8 +149,7 @@ def order_status():
               elif ChatReply[1]>=70 and ChatReply[2] <= 48:
                   aa = {}
                   aa['input'] = request.form.get('ui_query')
-                  aa['result'] = request.form.get('user_id')
-                  #aa['result'] = dfa[ChatReply[2]]
+                  aa['result'] = dfa[ChatReply[2]]
                   
               else:
                   aa = {}
