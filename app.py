@@ -120,7 +120,7 @@ def order_status():
           aa['result'] = "You have successfully logged in! How can I help you?"
           return aa
       except ValueError:
-          if aa['sss'] != "":
+          if request.form.get('user_id') != "":
               query = request.form.get('ui_query')
               query1 = pd.Series(query)
               query2 = query1.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
