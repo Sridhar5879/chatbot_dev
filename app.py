@@ -104,7 +104,6 @@ def order_status():
       #Taking the input query from user and converting it to an usable string
       try:
           userid = int(request.form.get('ui_query'))
-          break
           if userid in list(SD['ID']):
               Retailer = SD[SD['ID'] == userid]
           else:
