@@ -120,8 +120,10 @@ def order_status():
           aa = {}
           aa['input'] = int(request.form.get('ui_query'))
           aa['sss'] = userid
-          #aa['result'] = aa['sss']
-          aa['result'] = "You have successfully logged in! How can I help you?"
+          append_df_to_excel('Book2.xlsx', Retailer, header=1, index=False, startrow=0, sheet_name='Data')
+          name = Retailer['Name'][2]
+          result = "Hi %s, please select a report from the following '\n' <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Book2.xlsx'>Global Report</a>"%name
+          aa['result'] = result
           return aa
       except ValueError:
           query = request.form.get('ui_query')
