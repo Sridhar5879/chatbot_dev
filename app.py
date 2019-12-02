@@ -122,7 +122,7 @@ def order_status():
           aa['sss'] = userid
           append_df_to_excel('Book2.xlsx', Retailer, header=1, index=False, startrow=0, sheet_name='Data')
           name = Retailer['Name'][2]
-          result = "Hi %s, please select a report from the following '\n' <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Book2.xlsx'>Global Report</a>"%name
+          result = "Hi %s, please select a report from the following '\n' <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Book2.xlsx?raw=true'>Global Report</a>"%name
           aa['result'] = result
           return aa
       except ValueError:
