@@ -121,7 +121,8 @@ def order_status():
           aa['input'] = int(request.form.get('ui_query'))
           aa['sss'] = userid
           append_df_to_excel('Book2.xlsx', Retailer, header=1, index=False, startrow=0, sheet_name='Data')
-          name = Retailer['Name'][2]
+          names = list(Retailer['Name'])
+          name =names[0]
           result = "Hi %s, please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report GH.xlsx?raw=true'>Global Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>North India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>Punjab Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>South India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>Telangana Report</a>  "%name
           aa['result'] = result
           return aa
