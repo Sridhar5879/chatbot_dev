@@ -75,7 +75,7 @@ def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=2,truncate_sh
     
 #Reading the document and the relevant fields
 df=pd.read_excel("chatbot - CGL.xlsx")
-SD = pd.read_excel("CGL Retailer Details 2.xlsx")
+SD = pd.read_excel("CGL Retailer Details.xlsx")
 dfq=df['Question']
 dfa=df['Answer']
 
@@ -123,7 +123,12 @@ def order_status():
           append_df_to_excel('Book2.xlsx', Retailer, header=1, index=False, startrow=0, sheet_name='Data')
           names = list(Retailer['Name'])
           name =names[0]
-          result = "Hi %s, please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report GH.xlsx?raw=true'>Global Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>North India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>Punjab Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>South India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>Telangana Report</a>  "%name
+          if userid == 932245:
+              result = "Hi %s, India Sales '\n' please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report GH.xlsx?raw=true'>Global Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>North India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>Punjab Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>South India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>Telangana Report</a>  "%name
+          elif userid == 941795:
+              result = "Hi %s, South India Sales '\n' please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report GH.xlsx?raw=true'>Global Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>South India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>Telangana Report</a>  "%name
+          elif userid == 934771:
+              result = "Hi %s, North India Sales '\n'please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report GH.xlsx?raw=true'>Global Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>North India Report</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>Punjab Report</a> "%name
           aa['result'] = result
           return aa
       except ValueError:
