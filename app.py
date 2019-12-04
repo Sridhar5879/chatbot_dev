@@ -123,14 +123,16 @@ def order_status():
           append_df_to_excel('Book2.xlsx', Retailer, header=1, index=False, startrow=0, sheet_name='Data')
           names = list(Retailer['Name'])
           name =names[0]
-          if userid == 932245:
-              result = "Hi %s - India Sales, Welcome to Crompton. Please select a report from the following <a href = '/app/SalesReportGH.xlsx' target='_blank'>IndiaSalesReport </a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>PunjabSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a>  "%name
-          elif userid == 941795:
-              result = "Hi %s - South India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> "%name
-          elif userid == 934771:
-              result = "Hi %s - North India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report PJB.xlsx?raw=true'>PunjabSalesReport</a> "%name
-          elif userid == 415250:
+          if userid == 181800:
+              result = "Hi %s - India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/SalesReportGH.xlsx?raw=true'>IndiaSalesReport </a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> "%name
+          elif userid == 454500:
+              result = "Hi %s - South India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> "%name
+          elif userid == 322300:
+              result = "Hi %s - North India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> "%name
+          elif userid == 349000:
               result = "Hi %s - Maharastra Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report Mum.xlsx?raw=true'>MumbaiSalesReport</a> "%name
+          else:
+              result = "Hi %s - Retailer, Welcome to Crompton. Please click the link for <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report W.xlsx?raw=true'>West_US_SalesReport</a> "%name
           aa['result'] = result
           return aa
       except ValueError:
