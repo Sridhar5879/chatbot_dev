@@ -132,7 +132,7 @@ def order_status():
           elif userid == 349000:
               result = "Hi %s - Maharastra Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report Mum.xlsx?raw=true'>MumbaiSalesReport</a> "%name
           else:
-              result = "Hi %s - Retailer, Welcome to Crompton. Please click the link for <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report W.xlsx?raw=true'>West_US_SalesReport</a> "%name
+              result = "Hi %s - Retailer, Welcome to Crompton. What are you looking for today? "%name
           aa['result'] = result
           return aa
       except ValueError:
