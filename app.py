@@ -124,7 +124,7 @@ def order_status():
           names = list(Retailer['Name'])
           name =names[0]
           if userid == 181800:
-              result = "Hi %s - India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/EnterpriseDashboard.ppsm'>Enterprise Dashboard </a> <a href = '/home/isaac/my_flask_app/cglchatbot_centos/SalesReportGH.xlsx' download>IndiaSalesReport </a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> "%name
+              result = "Hi %s - India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/EnterpriseDashboard.ppsm'>Enterprise Dashboard </a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/SalesReportGH.xlsx?raw=true'>IndiaSalesReport </a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report NI.xlsx?raw=true'>NorthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report MH.xlsx?raw=true'>MaharastraSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> "%name
           elif userid == 454500:
               result = "Hi %s - South India Sales, Welcome to Crompton. Please select a report from the following <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report SI.xlsx?raw=true'>SouthIndiaSalesReport</a> <a href = 'https://github.com/Sridhar5879/chatbot_dev/blob/master/Sales report TG.xlsx?raw=true'>TelanganaSalesReport</a> "%name
           elif userid == 322300:
@@ -172,4 +172,4 @@ def order_status():
       return render_template('chat.html')
 
 if __name__ == "__main__":
-  app.run(host='172.16.29.123')
+  app.run(host='127.0.0.1')
